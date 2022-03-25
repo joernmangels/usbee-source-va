@@ -1,0 +1,69 @@
+_schema-version: "3.2"
+ID: USBEE
+description: Enercon USBEE App
+version: 0.0.1
+modules:
+- name: USBEE-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: USBEE-destination-service
+    parameters:
+      content-target: true
+  - name: USBEE-repo-host
+    parameters:
+      service-key:
+        name: USBEE-repo-host-key
+  - name: USBEE-uaa
+    parameters:
+      service-key:
+        name: USBEE-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: USBEE_repo_host
+          ServiceInstanceName: USBEE-html5-srv
+          ServiceKeyName: USBEE-repo-host-key
+          sap.cloud.service: USBEE
+        - Authentication: OAuth2UserTokenExchange
+          Name: USBEE_uaa
+          ServiceInstanceName: USBEE-xsuaa-srv
+          ServiceKeyName: USBEE-uaa-key
+          sap.cloud.service: USBEE
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+resources:
+- name: USBEE-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json  
+    service: xsuaa
+    service-name: USBEE-xsuaa-srv
+    service-plan: application
+- name: USBEE-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+      init_data:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+          - Name: ui5
+            Type: HTTP
+            URL: https://ui5.sap.com
+            ProxyType: Internet
+            Authentication: NoAuthentication
+    service: destination
+    service-name: USBEE-destination-service
+    service-plan: lite
+- name: USBEE-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: USBEE-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
