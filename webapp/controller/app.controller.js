@@ -20,7 +20,8 @@ sap.ui.define([
 				break;
 			default:
 				//imagepath = path + "/image/enercon_background.png";
-				imagepath = path + "/image/" + filename;
+                var path = '/sap/bc/ui5_ui5/sap/zusbee001';
+                imagepath = path + "/image/" + filename;
 				break;
 			}
 			var oModel = new sap.ui.model.json.JSONModel({

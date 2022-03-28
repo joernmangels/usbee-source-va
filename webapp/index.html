@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<style>
-		html, body, body > div, #container, #container-uiarea {
-			height: 100%;
-		}
-	</style>
-	<script
-			id="sap-ui-bootstrap"
-			src="resources/sap-ui-core.js"
-			data-sap-ui-theme="sap_fiori_3"
-			data-sap-ui-resourceroots='{
-            "de.enercon.usbee": "."
-        }'
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-async="true"
-			data-sap-ui-preload="async"
-			data-sap-ui-libs="sap.m">
-	</script>
-	<script id="locate-reuse-libs" src="./utils/locate-reuse-libs.js"
-			data-sap-ui-manifest-uri="./manifest.json"
-			data-sap-ui-componentName="de.enercon.usbee">
-	</script>
-</head>
-<body class="sapUiBody sapUiSizeCompact" id="content">
-<div data-sap-ui-component data-name="de.enercon.usbee" data-id="container" data-settings='{"id" : "de.enercon.usbee"}' data-handle-validation="true"></div>
-</body>
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta charset="utf-8">
+      <title>QM-USBee</title>
+      <link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+      <script
+        id="sap-ui-bootstrap"
+		src="resources/sap-ui-cachebuster/sap-ui-core.js"    
+        data-sap-ui-theme="sap_belize"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-preload="async"
+        data-sap-ui-appCachebuster="./"
+        data-sap-ui-resourceroots='{
+           "de.enercon.usbee": "./",  "de.enercon.usbee.model": "model"
+        }' >
+      </script>
+      <script>
+//         data-sap-ui-theme="sap_bluecrystal"
+//         data-sap-ui-theme="sap_belize"
+
+// Brauchen wir für WebIDE
+//         src="../../resources/sap-ui-core.js"  
+//         src="../../1.50.0/resources/sap-ui-core.js"  
+//         src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"  
+//         src="https://sapui5.hana.ondemand.com/1.52.23/resources/sap-ui-core.js"
+//         src="https://sapui5.hana.ondemand.com/1.52.22/resources/sap-ui-core.js"
+//         src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"      
+// Brauchen wir für Deployment
+//         src="resources/sap-ui-core.js"  
+//  	   src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"      
+//         data-sap-ui-appCachebuster="./"
+
+         sap.ui.getCore().attachInit(function () {
+            new sap.m.Shell( "Shell1", {
+            	title: "QM-USBee",
+            	//appWidthLimited: false,
+            	app : new sap.ui.core.ComponentContainer({
+                  name : "de.enercon.usbee",
+                  height : "100%",
+                  manifestFirst: true,
+				  async: true
+               })
+            }).placeAt("content");
+         });
+      </script>
+   </head>
+   
+   <body class="sapUiBody" id="content">
+   </body>
 </html>

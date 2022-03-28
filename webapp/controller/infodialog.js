@@ -22,6 +22,7 @@ sap.ui.define([
 				imagepath = "./image/en_logo.png";
 				break;
 			default:
+                var path = '/sap/bc/ui5_ui5/sap/zusbee001';
 				imagepath = path + "/image/en_logo.png";
 				break;
 			}

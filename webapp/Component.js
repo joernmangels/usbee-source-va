@@ -38,8 +38,22 @@ sap.ui.define([
             // create the views based on the url/hash
             this.getRouter().initialize();
 
-            var oChgModel = new JSONModel(jQuery.sap.getModulePath("de.enercon.usbee.model.Changelog", "/Changelog.json"));
-            this.setModel(oChgModel, "chl");
+            
+
+            var path = jQuery.sap.getModulePath("de.enercon.usbee");
+            switch (path) {
+                case ".":
+                    var oChgModel = new JSONModel(jQuery.sap.getModulePath("de.enercon.usbee.model.Changelog", "/Changelog.json"));
+                    this.setModel(oChgModel, "chl");
+                    break;
+                default:
+                    var path = '/sap/bc/ui5_ui5/sap/zusbee001/model/Changelog/Changelog.json';
+                    var oChgModel = new JSONModel(path);
+                    this.setModel(oChgModel, "chl");
+                    //
+                    jQuery.sap.includeStyleSheet("/sap/bc/ui5_ui5/sap/zusbee001/css/style.css","css");
+                    break;
+            }
 
             //Last created Serialnr
             var oModelSernr = new JSONModel({
@@ -137,6 +151,7 @@ sap.ui.define([
                     imagepath = "image";
                     break;
                 default:
+                    var path = '/sap/bc/ui5_ui5/sap/zusbee001';
                     imagepath = path + "/image";
                     launchpad = true;
                     break;

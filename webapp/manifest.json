@@ -23,6 +23,21 @@
         "sourceTemplate": {
             "id": "servicecatalog.connectivityComponent",
             "version": "0.0.0"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "de-enercon-usbee-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "ZUSBEE_SEM",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
         }
     },
     "sap.ui": {
@@ -49,7 +64,7 @@
         },
         "handleValidation": true,
         "dependencies": {
-            "minUI5Version": "1.84.17",
+            "minUI5Version": "1.90.0",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -581,7 +596,7 @@
         }
     },
     "sap.platform.abap": {
-        "uri": "/sap/bc/ui5_ui5/wind/usbee001/webapp",
+        "uri": "/sap/bc/ui5_ui5/sap/zusbee001/webapp",
         "_version": "1.1.0"
     }
 }
