@@ -76,8 +76,8 @@ sap.ui.define([
 							success: function (oData) {
 
 								//var pdfSrc1 = oData.__metadata.media_src;
-								var strs = oData.__metadata.media_src.split("/sap");
-								var picpfad = "/sap" + strs[1];
+								var strs = oData.__metadata.media_src.split("/sap/opu");
+								var picpfad = "/sap/opu" + strs[1];
 								var pdfSrc1 = picpfad;
 
 								//ab 1.58

@@ -144,8 +144,8 @@ sap.ui.define([
 						var imgId = "img" + (i + 1);
 						//var imgSrc = oData.results[i].__metadata.media_src;
 						//var imgSrc = "/sap/opu/odata/sap/zusbee_qm_results_srv/PruefMerkmaleFotosSet(Prueflos='000002866086',Prueflos_Key_Modus='S1',Prueflos_Key_Object='TJM3_20180918',Vornr='0010',Merknr='0010',Filename='IMG_5833.jpg')/$value";
-						strs = oData.results[i].__metadata.media_src.split("/sap");
-						picpfad = "/sap" + strs[1];
+						strs = oData.results[i].__metadata.media_src.split("/sap/opu");
+						picpfad = "/sap/opu" + strs[1];
 						var imgSrc = picpfad;
 						var imgAlt = oData.results[i].Filename;
 						// var img = new sap.m.Image(imgId, {

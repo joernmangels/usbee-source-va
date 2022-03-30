@@ -75,8 +75,8 @@ sap.ui.define([
 								oModel_g.setProperty("/_displayfile/mimetype", "");
 								fnResolve("reject");
 							} else {
-								strs = oData.__metadata.media_src.split("/sap");
-								picpfad = "/sap" + strs[1];
+								strs = oData.__metadata.media_src.split("/sap/opu");
+								picpfad = "/sap/opu" + strs[1];
 								pdfSrc1 = picpfad;
 								file = oData.Filename;
 								mime = oData.Mimetype;
